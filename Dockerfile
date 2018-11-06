@@ -10,7 +10,9 @@ RUN apt-get update -y && \
 		unzip \
 		openssh-client \
 		rsync && \
-		rm -rf /var/lib/apt/lists/*
+	rm -rf /var/lib/apt/lists/* && \
+	apt-get autoremove && \
+	apt-get clean
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
 	php composer-setup.php && \
